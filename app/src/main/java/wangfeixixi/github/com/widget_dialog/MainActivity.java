@@ -15,14 +15,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.basic_test).setOnClickListener(this);
-        findViewById(R.id.under_text_test).setOnClickListener(this);
-        findViewById(R.id.error_text_test).setOnClickListener(this);
-        findViewById(R.id.success_text_test).setOnClickListener(this);
-        findViewById(R.id.warning_confirm_test).setOnClickListener(this);
-        findViewById(R.id.warning_cancel_test).setOnClickListener(this);
-        findViewById(R.id.custom_img_test).setOnClickListener(this);
-        findViewById(R.id.progress_dialog).setOnClickListener(this);
+//        findViewById(R.id.basic_test).setOnClickListener(this);
+//        findViewById(R.id.under_text_test).setOnClickListener(this);
+//        findViewById(R.id.error_text_test).setOnClickListener(this);
+//        findViewById(R.id.success_text_test).setOnClickListener(this);
+//        findViewById(R.id.warning_confirm_test).setOnClickListener(this);
+//        findViewById(R.id.warning_cancel_test).setOnClickListener(this);
+//        findViewById(R.id.custom_img_test).setOnClickListener(this);
+//        findViewById(R.id.progress_dialog).setOnClickListener(this);
     }
 
     @Override
