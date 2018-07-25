@@ -46,6 +46,7 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
     private View mLine_btn;
     private View mLine_content;
     private LinearLayout mLL_content;
+    private TextView mLoading_text;
 
     public static interface OnSweetClickListener {
         public void onClick(ShareDialog sweetAlertDialog);
@@ -116,6 +117,7 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
         mLL_content = (LinearLayout) findViewById(R.id.ll_content);
         mConfirmButton = (Button) findViewById(R.id.confirm_button);
         mCancelButton = (Button) findViewById(R.id.cancel_button);
+        mLoading_text = (TextView) findViewById(R.id.loading_text);
         mProgressHelper.setProgressWheel((ProgressWheel) findViewById(R.id.progressWheel));
         mConfirmButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
@@ -221,6 +223,13 @@ public class ShareDialog extends Dialog implements View.OnClickListener {
         mTitleText = text;
         if (mTitleTextView != null && mTitleText != null) {
             mTitleTextView.setText(mTitleText);
+        }
+        return this;
+    }
+
+    public ShareDialog setLoadingText(String text) {
+        if (mLoading_text != null && text != null) {
+            mLoading_text.setText(text);
         }
         return this;
     }
