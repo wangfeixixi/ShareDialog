@@ -27,34 +27,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        final SweetAlertDialog dialog = new SweetAlertDialog(this);
+//        final ShareDialog dialog = new ShareDialog(this);
+
         switch (v.getId()) {
             case R.id.basic_test:
                 // default title "Here's a message!"
-                SweetAlertDialog sd = new SweetAlertDialog(this);
-                sd.setCancelable(true);
-                sd.setCanceledOnTouchOutside(true);
-                sd.show();
+                dialog.setCancelable(true);
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.show();
                 break;
             case R.id.under_text_test:
-                new SweetAlertDialog(this)
-                        .setContentText("It's pretty, isn't it?")
+                dialog.setContentText("It's pretty, isn't it?")
                         .show();
                 break;
             case R.id.error_text_test:
-                new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Oops...")
+                dialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                dialog.setTitleText("Oops...")
                         .setContentText("Something went wrong!")
                         .show();
                 break;
             case R.id.success_text_test:
-                new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                        .setTitleText("Good job!")
+//                new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                dialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                dialog.setTitleText("Good job!")
                         .setContentText("You clicked the button!")
                         .show();
                 break;
             case R.id.warning_confirm_test:
-                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Are you sure?")
+                dialog.changeAlertType(SweetAlertDialog.WARNING_TYPE);
+                dialog.setTitleText("Are you sure?")
                         .setContentText("Won't be able to recover this file!")
                         .setConfirmText("Yes,delete it!")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -71,8 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .show();
                 break;
             case R.id.warning_cancel_test:
-                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Are you sure?")
+//                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                dialog.changeAlertType(SweetAlertDialog.WARNING_TYPE);
+                dialog.setTitleText("Are you sure?")
                         .setContentText("Won't be able to recover this file!")
                         .setCancelText("No,cancel plx!")
                         .setConfirmText("Yes,delete it!")
@@ -113,49 +116,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .show();
                 break;
             case R.id.custom_img_test:
-                new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
-                        .setTitleText("Sweet!")
+//                new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                dialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                dialog.setTitleText("Sweet!")
                         .setContentText("Here's a custom image.")
                         .setCustomImage(R.drawable.custom_img)
                         .show();
                 break;
             case R.id.progress_dialog:
-                final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("Loading");
-                pDialog.show();
-                pDialog.setCancelable(false);
+//                final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.LOADING_TYPE)
+                dialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                dialog.setTitleText("Loading");
+                dialog.show();
+                dialog.setCancelable(false);
                 new CountDownTimer(800 * 7, 800) {
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
                         switch (i) {
                             case 0:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
+                                dialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;
                             case 1:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_50));
+                                dialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_50));
                                 break;
                             case 2:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
+                                dialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
                                 break;
                             case 3:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_20));
+                                dialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_deep_teal_20));
                                 break;
                             case 4:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_blue_grey_80));
+                                dialog.getProgressHelper().setBarColor(getResources().getColor(R.color.material_blue_grey_80));
                                 break;
                             case 5:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.warning_stroke_color));
+                                dialog.getProgressHelper().setBarColor(getResources().getColor(R.color.warning_stroke_color));
                                 break;
                             case 6:
-                                pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
+                                dialog.getProgressHelper().setBarColor(getResources().getColor(R.color.success_stroke_color));
                                 break;
                         }
                     }
 
                     public void onFinish() {
                         i = -1;
-                        pDialog.setTitleText("Success!")
+                        dialog.setTitleText("Success!")
                                 .setConfirmText("OK")
                                 .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                     }
